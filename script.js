@@ -10,6 +10,38 @@ const presets = {"presets":
     {"name":"Driving License Signature","type":"signature","format":["JPG","JPEG"],"fileSize":{"min":20,"max":20,"unit":"KB"},"dimensions":{"width":256,"height":64,"unit":"px"}}
 ]};
 
+// Add these variables at the top of your file
+let deferredPrompt;
+const installButton = document.createElement('button');
+installButton.style.display = 'none';
+installButton.textContent = 'Install App';
+document.body.appendChild(installButton);
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Prevent Chrome 67 and earlier from automatically showing the prompt
+  e.preventDefault();
+  // Stash the event so it can be triggered later
+  deferredPrompt = e;
+  // Update UI to notify the user they can add to home screen
+  installButton.style.display = 'block';
+});
+
+installButton.addEventListener('click', (e) => {
+  // Hide our user interface that shows our A2HS button
+  installButton.style.display = 'none';
+  // Show the prompt
+  deferredPrompt.prompt();
+  // Wait for the user to respond to the prompt
+  deferredPrompt.userChoice.then((choiceResult) => {
+    if (choiceResult.outcome === 'accepted') {
+      console.log('User accepted the A2HS prompt');
+    } else {
+      console.log('User dismissed the A2HS prompt');
+    }
+    deferredPrompt = null;
+  });
+});
+
 
 const imageUpload = document.getElementById('imageUpload');
 const imagePreview = document.getElementById('imagePreview');
