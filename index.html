@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#4299e1">
     <title>Image Resizer with Document Presets</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-
-    </style>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/icon-192x192.png">
 </head>
 <body>
     <div class="container">
@@ -27,5 +27,14 @@
         <div id="feedback"></div>
     </div>
     <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/service-worker.js')
+              .then((reg) => console.log('Service worker registered.', reg))
+              .catch((err) => console.log('Service worker registration failed:', err));
+          });
+        }
+      </script>
 </body>
 </html>
