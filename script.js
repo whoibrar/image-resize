@@ -10,7 +10,6 @@ const presets = {"presets":
     {"name":"Driving License Signature","type":"signature","format":["JPG","JPEG"],"fileSize":{"min":20,"max":20,"unit":"KB"},"dimensions":{"width":256,"height":64,"unit":"px"}}
 ]};
 
-// Add these variables at the top of your file
 let deferredPrompt;
 const installButton = document.createElement('button');
 installButton.style.display = 'none';
