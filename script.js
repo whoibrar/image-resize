@@ -56,6 +56,14 @@ const feedback = document.getElementById('feedback');
 let imageFile = null;
 let selectedPreset = null;
 
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js', {scope: '/'})
+        .then((reg) => console.log('Service worker registered.', reg))
+        .catch((err) => console.log('Service worker registration failed:', err));
+    });
+  }
+
 function populateDropdown() {
     resizeOptionDropdown.innerHTML = '';
     presets.presets.forEach(preset => {
