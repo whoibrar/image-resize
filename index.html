@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Resizer with Document Presets</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Image Resizer with Document Presets</h1>
+        <input type="file" id="imageUpload" accept="image/*">
+        <img id="imagePreview" style="display: none;">
+        <div class="dropdown">
+            <input type="text" id="resizeOptionInput" placeholder="Select Your Resize options">
+            <div id="resizeOptionDropdown" class="dropdown-content"></div>
+        </div>
+        <div id="customSizeInputs" style="display: none;">
+            <input type="number" id="customWidth" placeholder="Width">
+            <input type="number" id="customHeight" placeholder="Height">
+            <input type="number" id="customMaxSize" placeholder="Max size (KB)">
+        </div>
+        <button id="resizeButton" disabled>Resize and Download</button>
+        <div id="feedback"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
